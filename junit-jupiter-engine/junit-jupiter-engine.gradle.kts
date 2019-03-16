@@ -2,6 +2,10 @@ plugins {
 	groovy
 }
 
+repositories {
+	maven(url = "https://oss.jfrog.org/artifactory/oss-snapshot-local/")
+}
+
 apply(from = "$rootDir/gradle/testing.gradle.kts")
 
 description = "JUnit Jupiter Engine"
@@ -44,5 +48,5 @@ dependencies {
 	testImplementation(project(":junit-platform-runner"))
 	testImplementation(project(":junit-platform-testkit"))
 	testImplementation("org.jetbrains.kotlin:kotlin-stdlib")
-	testImplementation(localGroovy())
+	testImplementation("org.codehaus.groovy:groovy-all:2.5.7-20190316.111415-26")
 }
