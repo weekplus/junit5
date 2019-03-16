@@ -13,6 +13,7 @@ package platform.tooling.support.tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
+import static org.junit.jupiter.api.condition.JRE.JAVA_13;
 
 import java.nio.file.Paths;
 import java.util.List;
@@ -21,6 +22,7 @@ import de.sormuras.bartholdy.Tool;
 import de.sormuras.bartholdy.tool.GradleWrapper;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnJre;
 import platform.tooling.support.Request;
 
 /**
@@ -29,6 +31,7 @@ import platform.tooling.support.Request;
 class GradleMissingEngineTests {
 
 	@Test
+	@DisabledOnJre(JAVA_13) // https://github.com/gradle/gradle/issues/8681
 	void gradle_wrapper() {
 		test(new GradleWrapper(Paths.get("..")), "wrapper");
 	}

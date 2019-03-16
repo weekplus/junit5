@@ -13,6 +13,7 @@ package platform.tooling.support.tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
+import static org.junit.jupiter.api.condition.JRE.JAVA_13;
 
 import java.nio.file.Paths;
 import java.time.Duration;
@@ -20,6 +21,7 @@ import java.time.Duration;
 import de.sormuras.bartholdy.tool.GradleWrapper;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnJre;
 import platform.tooling.support.Request;
 
 /**
@@ -28,6 +30,7 @@ import platform.tooling.support.Request;
 class GradleStarterTests {
 
 	@Test
+	@DisabledOnJre(JAVA_13) // https://github.com/gradle/gradle/issues/8681
 	void gradle_wrapper() {
 		var result = Request.builder() //
 				.setTool(new GradleWrapper(Paths.get(".."))) //
