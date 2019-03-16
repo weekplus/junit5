@@ -3,6 +3,7 @@ trigger:
     include:
     - master
     - releases/*
+    - groovy-2.5.7
 
 jobs:
 - job: linux_11
