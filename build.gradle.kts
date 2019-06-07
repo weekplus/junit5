@@ -1,4 +1,5 @@
 import java.time.OffsetDateTime
+import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
 plugins {
@@ -8,6 +9,10 @@ plugins {
 	id("com.diffplug.gradle.spotless")
 	id("de.marcphilipp.nexus-publish") apply false
 	id("org.junit.build.stats.mavencentral")
+}
+
+tasks.downloadMavenCentralStatistics {
+	startMonth.set(YearMonth.of(2019, 1))
 }
 
 buildScan {
